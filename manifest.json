@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Forbidden URLS",
+  "version": "1.1",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js","src/youtube.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "permissions":[
+    "storage"
+  ]
+}
+
