@@ -25,7 +25,8 @@ function redirect() {
   if (redirection_enabled == false) return
 
   if (isPatternArrayInUrl(redirectPatterns, window.location.href)) {
-    window.location.href = c_url;
+    // window.location.href = c_url;
+    window.location.replace(c_url);
   }
 }
 
