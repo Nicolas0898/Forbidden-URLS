@@ -8,7 +8,6 @@ function isPatternArrayInUrl(patternArray, Url) {
   for (i in patternArray) {
     let value = patternArray[i]
 
-    console.log(value)
     if(value[0]==":"){
       let c =  (":"+ ( Url.split("/")[2] )) == value
       if(c) return c 
