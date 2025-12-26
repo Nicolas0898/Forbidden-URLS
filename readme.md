@@ -1,4 +1,8 @@
 # Forbidden URLS
+<<<<<<< HEAD
+=======
+
+>>>>>>> 48264db (exact match)
 Extensão basica que redireciona o usuario pra fora de páginas definidas por ele,
 com o objetivo de aumentar a produtividade
 
