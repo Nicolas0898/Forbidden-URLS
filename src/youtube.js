@@ -1,7 +1,6 @@
 var isActive = true
 
 function a(e) {
-    console.log(isActive)
     var check = window.location.href
     if (e) check = e
 
