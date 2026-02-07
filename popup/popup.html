@@ -8,16 +8,18 @@
 </head>
 
 <body style="width: 300px; margin: 20px;" class="rounded">
-    
-    
-    <label for="list">Forbidden Urls:</label><br>
-    <input id="fue" type="checkbox" class="form-check-input">
-    <span>Enable redirections</span><br>
-    <textarea class="form-control mb-2" type="text" id="list"></textarea>
-    <small>Use ":" before an word for an exact match</small> <br>
+    <input id="password" placeholder="Password" type="Password" class="form-control mb-2">
+    <div id="block"" class="d-none">
 
-    <input id="dyr" type="checkbox" class="form-check-input">
-    <span>Disable youtube recomendations</span>
+        <label for="list">Forbidden Urls:</label><br>
+        <input id="fue" type="checkbox" class="form-check-input">
+        <span>Enable redirections</span><br>
+        <textarea class="form-control mb-2" type="text" id="list"></textarea>
+        <small>Use ":" before an word for an exact match</small> <br>
+        
+        <input id="dyr" type="checkbox" class="form-check-input">
+        <span>Disable youtube recomendations</span>
+    </div>
 </body>
 
 <script src="/src/data.js"></script>
