@@ -6,7 +6,44 @@ const password_input = document.getElementById("password")
 const block = document.getElementById("block")
 const addBtn   = document.getElementById("addBtn")
 const addInput = document.getElementById("addInput")
-const password = "9876543210abcdefghijklmnopqrstuvwxyz0123456789"
+const next = document.getElementById("next")
+
+const alphabet = "abcdefghijklmnopqrstuvwxyz"
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const numbers  = "0123456789"
+const symbols  = "!@#$%&*(){}/=-+_,.<>;:"
+const password = generatePassword()
+
+function random(min,max){
+    return Math.round(Math.random() * (max-min)) + min
+}
+
+function generatePassword(){
+    let pass = ''
+    const size = 25
+
+    for(let i = 0;i<size;i++){
+        const rnd = random(1,4)
+        switch(rnd){
+            case 1:
+                pass+=alphabet[random(0,alphabet.length - 1)]
+                break
+            case 2:
+                pass+=ALPHABET[random(0,ALPHABET.length - 1)]
+                break
+            case 3:
+                pass+=numbers[random(0,numbers.length - 1)]
+                break
+            case 4:
+                pass+=symbols[random(0,symbols.length - 1)]
+                break
+        }
+    }
+    
+
+
+    return pass
+}
 
 
 function createWebsiteWidget(name){
@@ -91,9 +128,36 @@ addBtn.addEventListener("click",async ()=>{
 })
 
 password_input.addEventListener("input",()=>{
+    let equal = true
+    for(i in password_input.value){
+        const char  = password_input.value[i]
+        const other = password[i]
+        if(char!=other){
+            equal = false
+            break
+        }
+    }
+
+    if(equal){
+        password_input.classList.remove("border-danger")
+        password_input.classList.remove("text-danger")
+    }else{
+        password_input.classList.add("border-danger")
+        password_input.classList.add("text-danger")
+    }
+
+
+    const nextchar = password[password_input.value.length]
+    if(nextchar){
+        next.innerText = nextchar 
+    }else{
+        next.innerText = "UNLOCKED!"
+    }
     if(password_input.value == password){
         block.classList.remove("d-none")
     }else{
         block.classList.add("d-none")
     }
 })
+
+next.innerText = password[0]

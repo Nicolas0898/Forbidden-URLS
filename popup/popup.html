@@ -11,8 +11,9 @@
     <h1>Forbidden URLS</h1>
     <hr class="border">
 
-    Unlock:
-    <input id="password" placeholder="Password" type="Password" class="form-control mb-2">
+    Unlock:<br style="height: 5px;">
+    <input id="password" placeholder="Password" type="Password" class="form-control">
+    <span class="fst-italic" style="font-size: 0.75em;">Next character: <span id="next"></span></span>
     <hr class="border">
     
     <div class="mb-2 input-group">
@@ -21,16 +22,17 @@
     </div>
     <small>Use ":" before an word for an exact match</small> <br>
 
-    <div id="block"" class="d-none">
+    <div id="block"" class="d-none border-top-1">
 
-        <label for="list">Forbidden Urls:</label><br>
+        <hr class="border">
+        <label class="fw-bold" for="list">Forbidden Urls:</label><br>
         <div id="scrollList" class="overflow-y-auto mb-1" style="max-height: 310px;">
             
         </div>
         <!-- <textarea class="form-control mb-2" type="text" id="list"></textarea> -->
         <input id="fue" type="checkbox" class="form-check-input">
         <span>Enable redirections</span><br>
-        
+        <hr class="border">
         <input id="dyr" type="checkbox" class="form-check-input">
         <span>Disable youtube recomendations</span>
     </div>

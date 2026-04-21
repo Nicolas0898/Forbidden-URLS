@@ -1,7 +1,6 @@
 # Forbidden URLS
-Extensão basica que redireciona o usuario pra fora de páginas definidas por ele,
-com o objetivo de aumentar a produtividade
+Uma extensão simples que bloqueia páginas definidas pelo usuario.
 
-Também deixa a seção de recomendados do youtube invisível, junto com os comentarios dos videos
+Também remove a seção de recomendados do youtube, junto com os comentarios nos videos
 
 ![example](./example.png)

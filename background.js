@@ -1,4 +1,4 @@
-var c_url = "https://google.com"
+var c_url = "./blocked.html"
 var redirection_enabled = true
 
 var redirectPatterns = ["shorts"]
