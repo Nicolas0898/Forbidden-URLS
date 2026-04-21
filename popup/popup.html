@@ -8,14 +8,25 @@
 </head>
 
 <body style="width: 300px; margin: 20px;" class="rounded">
+    Unlock:
     <input id="password" placeholder="Password" type="Password" class="form-control mb-2">
+    <hr>
+    
+    <div class="mb-2 input-group">
+        <input  id="addInput" class="form-control" type="text">
+        <button id="addBtn" class="btn btn-secondary">Add website</button>
+    </div>
+    <small>Use ":" before an word for an exact match</small> <br>
+
     <div id="block"" class="d-none">
 
         <label for="list">Forbidden Urls:</label><br>
+        <div id="scrollList" class="overflow-y-auto mb-1" style="max-height: 310px;">
+            
+        </div>
+        <!-- <textarea class="form-control mb-2" type="text" id="list"></textarea> -->
         <input id="fue" type="checkbox" class="form-check-input">
         <span>Enable redirections</span><br>
-        <textarea class="form-control mb-2" type="text" id="list"></textarea>
-        <small>Use ":" before an word for an exact match</small> <br>
         
         <input id="dyr" type="checkbox" class="form-check-input">
         <span>Disable youtube recomendations</span>
