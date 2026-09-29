@@ -7,12 +7,12 @@ const block = document.getElementById("block")
 const addBtn   = document.getElementById("addBtn")
 const addInput = document.getElementById("addInput")
 const next = document.getElementById("next")
+const form = document.getElementById("form")
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const numbers  = "0123456789"
 const symbols  = "!@#$%&*(){}/=-+_,.<>;:"
-const password = generatePassword()
 
 function random(min,max){
     return Math.round(Math.random() * (max-min)) + min
@@ -20,7 +20,7 @@ function random(min,max){
 
 function generatePassword(){
     let pass = ''
-    const size = 25
+    const size = 20
 
     for(let i = 0;i<size;i++){
         const rnd = random(1,4)
@@ -118,46 +118,62 @@ regBool("dyr")
 //     chrome.storage.local.set({ "redirectionURLS": [list.value.split(",")] })
 // })
 
-addBtn.addEventListener("click",async ()=>{
+async function addElementToList() {
+    const inputval = addInput.value
     const values = (await chrome.storage.local.get("redirectionURLS")).redirectionURLS
     console.log(values)
-    values.push(addInput.value)
+    values.push(inputval)
     addInput.value = ''
     chrome.storage.local.set({"redirectionURLS":values})
     updateList(values)
+}
+
+addBtn.addEventListener("click",addElementToList)
+form.addEventListener("submit",e=>{
+    addElementToList()
+    e.preventDefault()
+    return false
 })
 
-password_input.addEventListener("input",()=>{
-    let equal = true
-    for(i in password_input.value){
-        const char  = password_input.value[i]
-        const other = password[i]
-        if(char!=other){
-            equal = false
-            break
+
+function main(){
+    const password = generatePassword()
+
+
+    password_input.addEventListener("input",()=>{
+        let equal = true
+        for(i in password_input.value){
+            const char  = password_input.value[i]
+            const other = password[i]
+            if(char!=other){
+                equal = false
+                break
+            }
         }
-    }
 
-    if(equal){
-        password_input.classList.remove("border-danger")
-        password_input.classList.remove("text-danger")
-    }else{
-        password_input.classList.add("border-danger")
-        password_input.classList.add("text-danger")
-    }
+        if(equal){
+            password_input.classList.remove("border-danger")
+            password_input.classList.remove("text-danger")
+        }else{
+            password_input.classList.add("border-danger")
+            password_input.classList.add("text-danger")
+        }
 
 
-    const nextchar = password[password_input.value.length]
-    if(nextchar){
-        next.innerText = nextchar 
-    }else{
-        next.innerText = "UNLOCKED!"
-    }
-    if(password_input.value == password){
-        block.classList.remove("d-none")
-    }else{
-        block.classList.add("d-none")
-    }
-})
+        const nextchar = password[password_input.value.length]
+        if(nextchar){
+            next.innerText = nextchar 
+        }else{
+            next.innerText = "UNLOCKED!"
+        }
+        if(password_input.value == password){
+            block.classList.remove("d-none")
+        }else{
+            block.classList.add("d-none")
+        }
+    })
 
-next.innerText = password[0]
+    next.innerText = password[0]
+}
+
+main()
